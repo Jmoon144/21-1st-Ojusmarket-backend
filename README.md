@@ -2,6 +2,11 @@
 박준영, 박지우, 장동국, 현상협
 ### 🌽 O Jus Maket (오져스 마켓) **Team**
 
+# 21-1st-Ojusmarket-backend
+![레이어 3](https://user-images.githubusercontent.com/78678551/122677514-92942900-d21d-11eb-8ddb-d94491a41c57.png)
+
+### 🌽 O Jus Maket (오져스 마켓) **Team**
+
 **개발인원 (7명)**
 
 [Frontend](https://github.com/wecode-bootcamp-korea/21-1st-Ojusmarket-frontend) |  김명준, 김민기, 이기완
@@ -34,14 +39,34 @@
 
 ### 🏗 Modeling
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afdc1e30-891a-4f77-b5a9-12d473377f3f/maxojus_20210620_13_54.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afdc1e30-891a-4f77-b5a9-12d473377f3f/maxojus_20210620_13_54.png)
+![maxojus_20210620_13_54](https://user-images.githubusercontent.com/78678551/122676732-3d0a4d00-d21a-11eb-9e14-6e251319ece6.png)
 
 크게 사용자 (users), 재료 (ingredients), 레시피(recipes), 장바구니(carts), 주문하기(orders)를 우선적으로 구성하고, 이에 따른 세부 모델링을 구성하는 순서로 진행 하였습니다.
+
+모델링 회고 한마디
 
 > 초기 테이블 구성에서 carts 와 orders 부분에서 order_item 을 만들지 않아 cart-order참조의 경우에서 orderitem을 intertable로 만드는 코드로 수정해야 했습니다.
 또한 orderitem 테이블을 생성하면서 carts의 아이템을 직접적으로 삭제할 경우 orderitem도 사라지는 경우를 간과한 부분이 아쉽습니다.
 
-이에 따라 조금 더 파생될 수 있는 경우의 수와 필요한 필드에 대해서 진지하게 고민하고 코드를 치기 시작해야겠다고 느끼게 되었습니다.
+> 이에 따라 조금 더 파생될 수 있는 경우의 수와 필요한 필드에 대해서 진지하게 고민하고 로직구현을 시작해야겠다고 느끼게 되었습니다.
+
+---
+
+### 🧑‍💻 구현기능
+
+Users | 아이디 중복체크 회원가입 및 로그인, 기본배송정보 저장
+
+Ingredients | 상품정보, main 과 sub 카테고리, 관련 레시피와 연결
+
+Recipes | 관련 재료와 연결, 레시피 카테고리
+
+Carts | 상세페이지를 통한 장바구니 페이지 연결, 재료 삭제, 수량변경 가능
+
+Orders | 유저 정보와 상품 정보 조회, 배송 상태 저장, 결제하기 이동 시 결제된 장바구니 상품 삭제  
+
+기능구현 회고 한마디
+
+> 여러 orm이 있었는데 손에 익은 것만 사용하려는 경향이 있어 초기 기능구현에 비효율적인 코드들이 있었습니다. 효율성을 높이기 위해 다양한 orm 을 사용하다보니 연산속도와 코드 가독성을 위해서 django에서 제공하는 orm을 (related name, annotate등) 적극적으로 활용해야 할 필요성을 느꼈습니다.
 
 ---
 
@@ -61,14 +86,12 @@ APP | [Notion](https://www.notion.so/163f5d1be77f4dd7a33ec0377c2f0a6a) , Trello,
 
 Scrum | 스크럼 방식을 사용하여 매일 아침 미팅을 통해 어제 한 일, 오늘 할 일, blocker 세 가지를 공유하며 팀원들과 미팅을 진행하였습니다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18007f36-c0fb-4d39-8035-a4a2913410df/SCRUM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18007f36-c0fb-4d39-8035-a4a2913410df/SCRUM.png)
-
+![SCRUM](https://user-images.githubusercontent.com/78678551/122676713-282db980-d21a-11eb-9105-ea9fb73a2fb8.png)
 ---
 
-<회고>
+## **Reference**
 
-초기 테이블 구성에서 order item을 제외해서  cart 와 order 부분의 코드 작성하는 데 부정적 영향을 끼침. 조금 더 파생될 수 있는 경우의 수와 필요한 필드에 대해서 진지하게 고민하고 코드를 치기 시작해야겠다고 느낌
+- 이 프로젝트는 [오아시스마켓](https://www.oasis.co.kr/main) 사이트를 참조하여 학습목적으로 만들었습니다.
+- 실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
+- 이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.
 
-기능구현 : 여러 orm이 있었는데 손에 익은 것만 사용하려는 경향이 컸음. 연산속도와 코드 가독성을 위해서 django에서 제공하는 orm을 (related name, annotate등) 적극 활용해야 할 필요성을 느낌
-
-데모영상
